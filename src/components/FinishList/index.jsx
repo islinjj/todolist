@@ -21,7 +21,7 @@ class FinishList extends React.Component {
     render() {
         return (<div>
             {
-                this.props.texts.filter(item => item.done == true).map((val, key) => 
+                this.props.texts.filter(item => item.done === true).map((val, key) => 
                 <Item
                     key={key} index={key} text={val.content} onDelete={this.onDeleteItem}
                     done={val.done} markItem={this.onMark}

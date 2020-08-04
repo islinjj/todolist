@@ -2,7 +2,7 @@ import React from 'react'
 import { addItemAction, deleteItemAction, markItemAction } from '../../actions'
 import { connect } from 'react-redux';
 import Item from '../Item';
-
+import Api from '../../api/Api'
 class InputText extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +10,18 @@ class InputText extends React.Component {
             text: ''
         }
     }
+    componentDidMount(){
 
+        this.initList()
+    }
+    initList = () => {
+        let that = this
+        Api.getToDoList().then(res=>{
+            console.log(res.data)
+
+        })
+        console.log(this.state.list)
+    }
     onChange = (event) => {
         this.setState({ text: event.target.value })
     }
@@ -27,15 +38,24 @@ class InputText extends React.Component {
         this.props.markItem(index)
     }
     render() {
+        console.log("list",this.state.list)
         return (
             <div>
                 <input onBlur={this.onChange} />
                 <button onClick={this.onAdd}>add</button>
                 {
-                    this.props.texts.map((val, key) => <Item
+                    this.state.list.map((val, key) => <Item
                         key={key} index={key} text={val.content} onDelete={this.onDeleteItem}
                         done={val.done} markItem={this.onMark}
                     />)
+                    
+                    // Api.getToDoList().then(res=>{
+                    //     console.log(res.data)
+                    //     res.data.map((val,key) => <Item
+                    //         key={key} index={key} text={val.content} onDelete={this.onDeleteItem}
+                    //         done={val.status} markItem={this.onMark}
+                    //     />) 
+                    // })
                 }
 
             </div>
@@ -50,6 +70,7 @@ const mapDispatchToProps = ({
     addItem: addItemAction,
     deleteItem: deleteItemAction,
     markItem: markItemAction
+
 })
 
 
