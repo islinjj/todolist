@@ -4,4 +4,3 @@ import { ADD_ITEM, DELETE_ITEM, MARK_ITEM ,FETCH_ITEM} from '../actions/actionTy
 export const addItemAction = createAction(ADD_ITEM, (inputText,done) => ({ payload: { inputText:inputText,done:done } }));
 export const deleteItemAction = createAction(DELETE_ITEM, (index) => ({ payload: { index } }));
 export const markItemAction = createAction(MARK_ITEM, (index) => ({ payload: { index } }));
-export const fetchItemAction = createAction(FETCH_ITEM, (inputText,done) => ({ payload: { inputText:inputText,done:done } }));
