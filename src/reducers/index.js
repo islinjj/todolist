@@ -18,21 +18,13 @@ export default createReducer(initState, {
     [DELETE_ITEM]: (state, action) => (
         { texts: state.texts.filter((item, index) => index !== action.payload.index) }),
 
-    [MARK_ITEM]: (state, action) =>  //todo
-    {
-        // return {
-        //     texts: state.texts.map((item, index) => {
-        //         if(index === action.payload.index){
-        //             item.done = !item.done
-        //         }
-        //     }
-        //     )
-        // }
-
-        let inputIndex = action.payload.index
-        let isDone = state.texts[inputIndex].done
-        state.texts[inputIndex].done = true
-        return { texts: [].concat(state.texts) };
-    },
+    [MARK_ITEM]: (state, action) =>({
+        texts: state.texts.map((item, index) => {
+            if (index === action.payload.index) {
+                return {content: item.content, done: !item.done}
+            }
+             return item
+        })
+    }),
 
 })
