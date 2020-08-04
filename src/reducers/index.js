@@ -18,12 +18,13 @@ export default createReducer(initState, {
     [DELETE_ITEM]: (state, action) => (
         { texts: state.texts.filter((item, index) => index !== action.payload.index) }),
 
-    [MARK_ITEM]: (state, action) =>({
+    [MARK_ITEM]: (state, action) => ({
         texts: state.texts.map((item, index) => {
             if (index === action.payload.index) {
-                return {content: item.content, done: !item.done}
+                return { content: item.content, done: !item.done }
             }
-             return item
+            debugger
+            return item
         })
     }),
 

@@ -13,7 +13,6 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log(this.props.done )
         return (
             <div>
                 <label style={{ textDecorationLine: this.props.done ? 'line-through' : 'none' }}
