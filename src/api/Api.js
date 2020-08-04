@@ -13,6 +13,9 @@ export default {
     },
     postToDo:function(data) {
         return axios.post(host + "todo", data)
+    },
+    deleteToDo:function(id) {
+        return axios.delete(host + `/todos/${id}`)
     }
 }
 
