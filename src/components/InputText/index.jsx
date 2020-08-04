@@ -25,6 +25,7 @@ class InputText extends React.Component {
     }
 
     onAdd = () => {
+        
         this.props.addItem(this.state.text,false)
     }
 

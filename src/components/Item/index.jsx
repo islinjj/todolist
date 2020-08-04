@@ -6,6 +6,7 @@ class Item extends React.Component {
     }
 
     onDeleteItem = () =>{
+        this.props.onDelete(this.props.index)
         Api.deleteToDo(this.props.remoteId) 
         this.props.initList();
     }
