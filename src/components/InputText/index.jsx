@@ -14,8 +14,9 @@ class InputText extends React.Component {
     initList = () => {
         let that = this
         Api.getToDoList().then(res=>{
+            console.log(res.data)
             for(var key in res.data){
-                that.props.addItem(res.data[key].content,res.data[key].status)
+                that.props.addItem(res.data[key].content,res.data[key].status,res.data[key].id)
             }
         })
     }
@@ -41,8 +42,8 @@ class InputText extends React.Component {
                 <button onClick={this.onAdd}>add</button>
                 {
                     this.props.texts.map((val, key) => <Item
-                        key={key} index={key} text={val.content} onDelete={this.onDeleteItem}
-                        done={val.done} markItem={this.onMark}
+                        key={key} index={key} text={val.content} onDelete={this.onDeleteItem} remoteId = {val.id}
+                        done={val.done} markItem={this.onMark} initList = {this.initList}
                     />)
                 }
 

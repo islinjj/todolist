@@ -1,11 +1,13 @@
 import React from 'react'
+import Api from '../../api/Api'
 class Item extends React.Component {
     constructor(props) {
         super(props);
     }
 
     onDeleteItem = () =>{
-        this.props.onDelete(this.props.index)
+        Api.deleteToDo(this.props.remoteId) 
+        this.props.initList();
     }
     onMark = () => {
         this.props.markItem(this.props.index)

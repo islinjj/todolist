@@ -11,7 +11,8 @@ export default createReducer(initState, {
             texts: state.texts.concat(
                 {
                     content: action.payload.inputText,
-                    done: action.payload.done
+                    done: action.payload.done,
+                    id:action.payload.id
                 })
         }
     },
