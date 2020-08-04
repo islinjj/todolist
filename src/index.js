@@ -5,11 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
-import Container from './components/Container'
+
 ReactDOM.render(
   <Provider store = {store}>
     <React.StrictMode>
-      <Container />
+      <App />
     </React.StrictMode>
   </Provider>
   ,
