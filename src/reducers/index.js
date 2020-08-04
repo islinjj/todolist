@@ -24,7 +24,6 @@ export default createReducer(initState, {
             if (index === action.payload.index) {
                 return { content: item.content, done: !item.done }
             }
-            debugger
             return item
         })
     }),

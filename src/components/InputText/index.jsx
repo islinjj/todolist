@@ -25,8 +25,14 @@ class InputText extends React.Component {
     }
 
     onAdd = () => {
-        
         this.props.addItem(this.state.text,false)
+        Api.postToDo({
+            status : false,
+            content : this.state.text
+        })
+        Api.getToDoList().then(res=>{
+            console.log(res.data)
+        })
     }
 
     onDeleteItem = (index) => {
