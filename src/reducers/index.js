@@ -6,5 +6,5 @@ const initState = {
 }
 
 export default createReducer(initState, {
-    [ADD_ITEM]: ((state, action) => { return { text: state.text } })
+    [ADD_ITEM]: ((state, action) => { return { texts: state.texts.concat(action.payload.inputText) } })
 })
