@@ -4,7 +4,6 @@ import InputText from '../InputText';
 class Container extends React.Component {
     constructor(props) {
         super(props)
-
     }
     render() {
         return (<div>
