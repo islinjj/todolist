@@ -11,6 +11,7 @@ class Item extends React.Component {
         this.props.initList();
     }
     onMark = () => {
+        Api.putToDoList(this.props.remoteId,!this.props.done)
         this.props.markItem(this.props.index)
     }
 

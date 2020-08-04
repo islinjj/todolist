@@ -8,10 +8,10 @@ export default {
     },
 
     putToDoList : function (id,status) {
-        return axios.put(host + `/todos/${id}`, {"status": status})
+        return axios.put(host + `/${id}`, {"status": status})
     },
     postToDo:function(data) {
-        return axios.post(host, {data})
+        return axios.post(host, data)
     },
     deleteToDo:function(id) {
         return axios.delete(host + `/${id}`)
