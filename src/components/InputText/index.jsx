@@ -1,5 +1,5 @@
 import React from 'react'
-import { addItemAction } from '../../actions'
+import { addItemAction, deleteItemAction } from '../../actions'
 import { connect } from 'react-redux';
 import Item from '../Item';
 
@@ -11,7 +11,6 @@ class InputText extends React.Component {
         }
     }
 
-
     onChange = (event) => {
         this.setState({ text: event.target.value })
     }
@@ -20,16 +19,19 @@ class InputText extends React.Component {
         this.props.addItem(this.state.text)
     }
 
+    onDeleteItem = (index) =>{
+        console.log(index)
+        this.props.deleteItem(index)
+    }
+
     render() {
-        const initTexts = this.props.texts;
-        console.log('222', this.props.texts);
         return (
             <div>
                 <input onBlur={this.onChange} />
                 <button onClick={this.onAdd}>add</button>
                 {
-                    this.props.texts.map((val,key) => <Item
-                    key={key} index={key} text={val}
+                    this.props.texts.map((val, key) => <Item
+                        key={key} index={key} text={val} onDelete= {this.onDeleteItem}
                     />)
                 }
 
@@ -42,7 +44,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = ({
-    addItem: addItemAction
+    addItem: addItemAction,
+    deleteItem: deleteItemAction
 })
 
 
