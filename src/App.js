@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Container from './components/Container';
+import ToDoListPage from './components/ToDoListPage';
 import FinishList from './components/FinishList';
 import Menu from './components/Menu';
 
@@ -12,7 +12,7 @@ function App() {
      
       <HashRouter>
       <Menu />
-        <Route exact path="/" component={Container} />
+        <Route exact path="/" component={ToDoListPage} />
         <Route path="/finish" component={FinishList} />
         {/* <header className="App-header">
           <Container />
