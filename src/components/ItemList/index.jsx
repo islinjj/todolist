@@ -5,25 +5,15 @@ import Item from '../Item';
 class ItemList extends React.Component{
     constructor(props){
         super(props);
-        console.log(this.props.texts);
     }
 
     onMark =(index) =>{
         this.props.markItem(index)
     }
 
-    initList = () => {
-        let that = this
-        Api.getToDoList().then(res=>{
-            console.log(res.data)
-            for(var key in res.data){
-                that.props.addItem(res.data[key].content,res.data[key].status,res.data[key].id)
-            }
-        })
-    }
-
-    onDeleteItem = (index) => {
-        this.props.deleteItem(index)
+    onDeleteItem = (id) => {
+        this.props.deleteItem(id)
+        this.props.initList()
     }
 
     render(){
@@ -31,8 +21,8 @@ class ItemList extends React.Component{
             <div>
                  {
                     this.props.texts.map((val, key) => <Item
-                        key={key} index={key} text={val.content} onDelete={this.onDeleteItem} remoteId = {val.id}
-                        done={val.done} markItem={this.onMark} initList = {this.initList}
+                        key={key} index={key} item = {val} onDelete={this.onDeleteItem} 
+                         markItem={this.onMark} initList = {this.initList}
                     />)
                 }
             </div>

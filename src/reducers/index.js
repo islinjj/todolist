@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, MARK_ITEM } from '../actions/actionType';
+import { ADD_ITEM, DELETE_ITEM, MARK_ITEM ,FETCH_ITEM} from '../actions/actionType';
 import { createReducer } from '@reduxjs/toolkit';
 
 const initState = {
@@ -17,14 +17,17 @@ export default createReducer(initState, {
         }
     },
     [DELETE_ITEM]: (state, action) => (
-        { texts: state.texts.filter((item, index) => index !== action.payload.index) }),
+        { texts: state.texts.filter(item => item.id !== action.payload.id) }),
 
     [MARK_ITEM]: (state, action) => ({
-        texts: state.texts.map((item, index) => {
-            if (index === action.payload.index) {
-                return { content: item.content, done: !item.done }
+        texts: state.texts.map(item => {
+            if (item.id === action.payload.id) {
+                return { content: item.content, status: !item.status }
             }
             return item
         })
+    }),
+    [FETCH_ITEM] :  (state, action) => ({
+        texts:action.payload.items
     }),
 })

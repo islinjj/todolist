@@ -6,20 +6,19 @@ class Item extends React.Component {
     }
 
     onDeleteItem = () =>{
-        this.props.onDelete(this.props.index)
-        Api.deleteToDo(this.props.remoteId) 
-        this.props.initList();
+        this.props.onDelete(this.props.item.id)
+        Api.deleteToDo(this.props.item.id) 
     }
     onMark = () => {
-        Api.putToDoList(this.props.remoteId,!this.props.done)
-        this.props.markItem(this.props.index)
+        Api.putToDoList(this.props.item.id,!this.props.item.status)
+        this.props.markItem(this.props.item.id)
     }
 
     render() {
         return (
             <div>
-                <label style={{ textDecorationLine: this.props.done ? 'line-through' : 'none' }}
-                 onClick={this.onMark}>{this.props.text}</label>
+                <label style={{ textDecorationLine: this.props.item.status ? 'line-through' : 'none' }}
+                 onClick={this.onMark}>{this.props.item.content}</label>
                 <button onClick = {this.onDeleteItem}>X</button>
             </div>
         )

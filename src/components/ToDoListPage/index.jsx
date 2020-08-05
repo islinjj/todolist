@@ -1,30 +1,28 @@
 import React from 'react';
 import InputTodo from '../InputTodo';
 import ItemList from '../ItemList';
-import { addItemAction, deleteItemAction, markItemAction } from '../../actions';
+import { addItemAction, deleteItemAction, markItemAction, fetchItemAction } from '../../actions';
 import { connect } from 'react-redux';
 import Api from '../../api/Api'
 
 class ToDoListPage extends React.Component {
     constructor(props) {
         super(props);
-        this.initList();
     }
 
-    initList = () => {
-        let that = this
-        Api.getToDoList().then(res=>{
-            console.log(res.data)
-            for(var key in res.data){
-                that.props.addItem(res.data[key].content,res.data[key].status,res.data[key].id)
-            }
-        })
+    componentWillMount(){
+        this.initList()
+    }
+
+    initList = async () => {
+        let response =  await Api.getToDoList()
+        this.props.fetchItem(response.data)
     }
 
     render() {
         return (<div>
             <InputTodo addItem={this.props.addItem} />
-            <ItemList texts = {this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList = {this.initList} />
+            <ItemList texts={this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList={this.initList} />
         </div>)
     }
 }
@@ -36,9 +34,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ({
     addItem: addItemAction,
     deleteItem: deleteItemAction,
-    markItem: markItemAction
+    markItem: markItemAction,
+    fetchItem: fetchItemAction
 })
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToDoListPage)
-// export default Container
