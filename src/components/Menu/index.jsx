@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'antd';
 
-class Menu extends React.Component {
+class TopMenu extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -9,12 +10,19 @@ class Menu extends React.Component {
     render() {
         return (
             <div>
-                <Link to='/'>todo</Link>
-                <span> / </span>
-                <Link to='/finish'>finish</Link>
+                <Menu
+                    onClick={this.handleClick}
+                    style={{ width: 100 }}
+                    mode="inline"
+                >
+                    <Menu.ItemGroup key="g1">
+                        <Menu.Item key="1"><Link to='/'>todo</Link></Menu.Item>
+                        <Menu.Item key="2"><Link to='/finish'>finish</Link></Menu.Item>
+                    </Menu.ItemGroup>
+                </Menu>
             </div>
         )
     }
 }
 
-export default Menu
+export default TopMenu

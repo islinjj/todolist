@@ -13,19 +13,20 @@ class FinishList extends React.Component {
     //     return null
     // }
     onMark = () => {
+        
         this.props.markItem(this.props.item.id)
     }
-    onDeleteItem = () =>{
+    onDeleteItem = () => {
         this.props.deleteItem(this.props.item.id)
     }
     render() {
         return (<div>
             {
-                this.props.texts.filter(item => item.status === true).map((val, key) => 
-                <Item
-                    key={key} index={key} text={val.content} onDelete={this.onDeleteItem}
-                    done={val.done} markItem={this.onMark}
-                />)
+                this.props.texts.filter(item => item.status === true).map((val, key) =>
+                    <Item
+                        key={key} index={key} item={val} onDelete={this.onDeleteItem}
+                        markItem={this.onMark}
+                    />)
             }
         </div>)
     }
