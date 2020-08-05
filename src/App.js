@@ -3,23 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 import ToDoListPage from './components/ToDoListPage';
 import FinishList from './components/FinishList';
-import Menu from './components/Menu';
-
+import TopMenu from './components/Menu';
+import { Spin } from 'antd';
+import { connect } from 'react-redux';
 import { HashRouter as Router, Route, HashRouter } from 'react-router-dom'
-function App() {
-  return (
-    <div className="App">
-     
-      <HashRouter>
-      <Menu />
-        <Route exact path="/" component={ToDoListPage} />
-        <Route path="/finish" component={FinishList} />
-        {/* <header className="App-header">
-          <Container />
-        </header> */}
-      </HashRouter>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Spin spinning={this.props.loading}>
+          <HashRouter>
+            <TopMenu />
+            <Route exact path="/" component={ToDoListPage} />
+            <Route path="/finish" component={FinishList} />
+          </HashRouter>
+        </Spin>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { loading: state.loadingReducer.loading };
+}
+
+export default connect(mapStateToProps)(App)

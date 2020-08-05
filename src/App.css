@@ -2,6 +2,8 @@
 
 .App {
   text-align: center;
+  display: flex;
+  margin: 50px;
 }
 
 .App-logo {
@@ -13,6 +15,10 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.ant-list-item{
+  display: block
 }
 
 .App-header {
