@@ -24,7 +24,7 @@ class ToDoListPage extends React.Component {
     render() {
         return (<div>
             <InputTodo addItem={this.props.addItem} />
-            <ItemList texts = {this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} />
+            <ItemList texts = {this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList = {this.initList} />
         </div>)
     }
 }
