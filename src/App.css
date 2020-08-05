@@ -1,8 +1,6 @@
 @import '~antd/dist/antd.css';
 
 .App {
-  text-align: center;
-  display: flex;
   margin: 50px;
 }
 
@@ -17,7 +15,7 @@
   }
 }
 
-.ant-list-item{
+.ant-spin-nested-loading{
   display: block
 }
 

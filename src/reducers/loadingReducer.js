@@ -7,12 +7,7 @@ const initState = {
 }
 
 export default createReducer(initState, {
-    // [LOADING]: (state, action) => (
-    //     { loading: action.payload.loading }
-    // ),
-
-    [LOADING]: (state, action) => {
-        console.log("sssssssssss",action.payload.loading);
-        return { loading: action.payload.loading }
-    }
+    [LOADING]: (state, action) => (
+        { loading: action.payload.loading }
+    ),
 })

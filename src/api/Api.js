@@ -25,7 +25,6 @@ export default {
 }
 
 todoApi.interceptors.request.use(request => {
-    console.log("send");
     store.dispatch({ type: LOADING, payload: { loading: true } });
     return request;
 }, error => error);

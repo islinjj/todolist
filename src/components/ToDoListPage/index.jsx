@@ -15,7 +15,7 @@ class ToDoListPage extends React.Component {
         this.initList()
     }
 
-    [todolist][dong&&vicky] refactor: modify get data and mark. = async () => {
+    initList = async () => {
         let response = await Api.getToDoList()
         this.props.fetchItem(response.data)
     }

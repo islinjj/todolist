@@ -33,7 +33,7 @@ class FinishList extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { texts: state.texts };
+    return { texts: state.todoReducer.texts };
 }
 
 const mapDispatchToProps = ({
