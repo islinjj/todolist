@@ -15,19 +15,19 @@ class ToDoListPage extends React.Component {
         this.initList()
     }
 
-    initList = async () => {
+    initList = async () => {//todo learn 
         let response = await Api.getToDoList()
         this.props.fetchItem(response.data)
     }
 
-    render() {
+    render() {//todo use antd div
         return (<div style={{ "width": "70%" }}>
             <PageHeader
                 className="site-page-header"
                 onBack={() => null}
                 title="To Do List"
             />
-            <InputTodo addItem={this.props.addItem} />
+            <InputTodo addItem={this.props.addItem} onInitList= {this.initList}/>
             <ItemList texts={this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList={this.initList} />
         </div>)
     }

@@ -21,11 +21,12 @@ class InputTodo extends React.Component {
     }
 
     onAdd = () => {
-        this.props.addItem(this.state.text, false)
+        
         let data = {
             status: false,
             content: this.state.text
         }
+        this.props.addItem(data)
         Api.postToDo(data)
         Api.getToDoList().then(res => {
             console.log(res.data)

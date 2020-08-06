@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, MARK_ITEM ,FETCH_ITEM} from '../actions/actionType';
+import { ADD_ITEM, DELETE_ITEM, MARK_ITEM, FETCH_ITEM } from '../actions/actionType';
 import { createReducer } from '@reduxjs/toolkit';
 
 const initState = {
@@ -8,16 +8,19 @@ const initState = {
 export default createReducer(initState, {
     [ADD_ITEM]: (state, action) => {
         return {
-            texts: state.texts.concat(
-                {
-                    content: action.payload.inputText,
-                    done: action.payload.done,
-                    id:action.payload.id
-                })
+            texts: state.texts.concat({
+                content: action.payload.content,
+                status: action.payload.status
+            }
+            )
         }
     },
-    [DELETE_ITEM]: (state, action) => (
-        { texts: state.texts.filter(item => item.id !== action.payload.id) }),
+    [DELETE_ITEM]: (state, action) => {
+        debugger
+       let items = { texts: state.texts.filter(item => item.id !== action.payload.id) }
+       return items
+    },
+     
 
     [MARK_ITEM]: (state, action) => ({
         texts: state.texts.map(item => {
@@ -27,7 +30,7 @@ export default createReducer(initState, {
             return item
         })
     }),
-    [FETCH_ITEM] :  (state, action) => ({
-        texts:action.payload.items
+    [FETCH_ITEM]: (state, action) => ({
+        texts: action.payload.items
     }),
 })
