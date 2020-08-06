@@ -28,17 +28,11 @@ class ItemList extends React.Component {
                         <List.Item>
                             <Item
                         key={key} index={key} item={val} onDelete={this.onDeleteItem}
-                        markItem={this.onMark} initList={this.initList}
+                        markItem={this.onMark} fetchItem={this.props.fetchItem} initList={this.props.initList}
                     />
                         </List.Item>
                     )}
                 />
-                {
-                    // this.props.texts.map((val, key) => <Item
-                    //     key={key} index={key} item={val} onDelete={this.onDeleteItem}
-                    //     markItem={this.onMark} initList={this.initList}
-                    // />)
-                }
             </div>
         )
     }

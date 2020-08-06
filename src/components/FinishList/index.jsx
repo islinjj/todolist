@@ -1,31 +1,26 @@
 import React from 'react';
 import Item from '../Item';
-import { deleteItemAction, markItemAction } from '../../actions'
+import { deleteItemAction, markItemAction ,fetchItemAction} from '../../actions'
 import { connect } from 'react-redux';
-
+import Api from '../../api/Api'
 class FinishList extends React.Component {
     constructor(props) {
         super(props)
     }
 
-    // static getDerivedStateFromProps(){
-    //     this.props.texts.filter(item => item.done == true)
-    //     return null
-    // }
-    onMark = () => {
-        
-        this.props.markItem(this.props.item.id)
-    }
-    onDeleteItem = () => {
-        this.props.deleteItem(this.props.item.id)
+
+    initList = async () => {//todo learn 
+        debugger
+        let response = await Api.getToDoList()
+        this.props.fetchItem(response.data)
     }
     render() {
         return (<div>
             {
                 this.props.texts.filter(item => item.status === true).map((val, key) =>
                     <Item
-                        key={key} index={key} item={val} onDelete={this.onDeleteItem}
-                        markItem={this.onMark}
+                        key={key} index={key} item={val} onDelete={this.props.deleteItem}
+                        markItem={this.props.markItem} initList={this.initList}
                     />)
             }
         </div>)
@@ -38,7 +33,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ({
     deleteItem: deleteItemAction,
-    markItem: markItemAction
+    markItem: markItemAction,
+    fetchItem: fetchItemAction
 })
 
 

@@ -20,6 +20,7 @@ export default {
         return todoApi.post(host, data)
     },
     deleteToDo: function (id) {
+        console.log('-->delete');
         return todoApi.delete(host + `/${id}`)
     }
 }

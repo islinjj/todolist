@@ -17,6 +17,7 @@ class ToDoListPage extends React.Component {
 
     initList = async () => {//todo learn 
         let response = await Api.getToDoList()
+        console.log(response.data);
         this.props.fetchItem(response.data)
     }
 
@@ -27,8 +28,8 @@ class ToDoListPage extends React.Component {
                 onBack={() => null}
                 title="To Do List"
             />
-            <InputTodo addItem={this.props.addItem} onInitList= {this.initList}/>
-            <ItemList texts={this.props.texts} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList={this.initList} />
+            <InputTodo addItem={this.props.addItem} onInitList={this.initList} />
+            <ItemList texts={this.props.texts} fetchItem={this.props.fetchItem} markItem={this.props.markItem} deleteItem={this.props.deleteItem} initList={this.initList} />
         </div>)
     }
 }

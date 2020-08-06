@@ -21,7 +21,6 @@ class InputTodo extends React.Component {
     }
 
     onAdd = () => {
-        
         let data = {
             status: false,
             content: this.state.text
@@ -34,7 +33,7 @@ class InputTodo extends React.Component {
     }
     render() {
         return (
-            <div style = {{"width":"30%","margin":"auto","display":"flex"}}>
+            <div style={{ "width": "30%", "margin": "auto", "display": "flex" }}>
                 <Input onBlur={this.onChange} />
                 <Button onClick={this.onAdd} size="middle">ADD</Button>
             </div>

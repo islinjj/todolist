@@ -17,10 +17,10 @@ export default createReducer(initState, {
     },
     [DELETE_ITEM]: (state, action) => {
         debugger
-       let items = { texts: state.texts.filter(item => item.id !== action.payload.id) }
-       return items
+        let items = { texts: state.texts.filter(item => item.id !== action.payload.id) }
+        return items
     },
-     
+
 
     [MARK_ITEM]: (state, action) => ({
         texts: state.texts.map(item => {

@@ -15,13 +15,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Spin spinning={this.props.loading}>
-          <HashRouter>
-            <TopMenu />
+
+        <HashRouter>
+          <TopMenu />
+          <Spin spinning={this.props.loading}>
             <Route exact path="/" component={ToDoListPage} />
-            <Route path="/finish" component={FinishList} />
-          </HashRouter>
-        </Spin>
+          </Spin>
+          <Route path="/finish" component={FinishList} />
+        </HashRouter>
+
       </div>
     );
   }
