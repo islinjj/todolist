@@ -25,7 +25,7 @@ class TopMenu extends React.Component {
                         <Link to='/'>TO DO</Link>
                     </Menu.Item>
                     <Menu.Item key="finish">
-                        <Link to='/finish'>FINISH</Link>FINISH
+                        <Link to='/finish'>FINISH</Link>
                     </Menu.Item>
                 </Menu>
             </div>

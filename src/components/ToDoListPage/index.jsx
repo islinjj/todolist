@@ -22,10 +22,9 @@ class ToDoListPage extends React.Component {
     }
 
     render() {//todo use antd div
-        return (<div style={{ "width": "70%" }}>
+        return (<div>
             <PageHeader
                 className="site-page-header"
-                onBack={() => null}
                 title="To Do List"
             />
             <InputTodo addItem={this.props.addItem} onInitList={this.initList} />

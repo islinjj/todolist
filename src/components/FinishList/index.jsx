@@ -15,7 +15,7 @@ class FinishList extends React.Component {
         this.props.fetchItem(response.data)
     }
     render() {
-        return (<div>
+        return (<div style={{"margin":"50px"}}>
             {
                 this.props.texts.filter(item => item.status === true).map((val, key) =>
                     <Item

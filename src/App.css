@@ -1,7 +1,9 @@
 @import '~antd/dist/antd.css';
 
 .App {
-  margin: 50px;
+  margin: auto;
+  width: 50%;
+  padding: 20px;
 }
 
 .App-logo {
@@ -15,8 +17,8 @@
   }
 }
 
-.ant-spin-nested-loading{
-  display: block
+.ant-list-item{
+  display: block;
 }
 
 .App-header {
