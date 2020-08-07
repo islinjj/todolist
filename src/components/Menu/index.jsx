@@ -7,18 +7,26 @@ class TopMenu extends React.Component {
         super(props);
     }
 
+    menu = {
+        current: 'todolist',
+        second: 'finish'
+    };
+
+    handleClick = e => {
+        this.setState({ current: e.key });
+    };
+
     render() {
+        const { current } = this.menu;
         return (
             <div>
-                <Menu
-                    onClick={this.handleClick}
-                    style={{ width: 100 }}
-                    mode="inline"
-                >
-                    <Menu.ItemGroup key="g1">
-                        <Menu.Item key="1"><Link to='/'>todo</Link></Menu.Item>
-                        <Menu.Item key="2"><Link to='/finish'>finish</Link></Menu.Item>
-                    </Menu.ItemGroup>
+                <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
+                    <Menu.Item key="todolist">
+                        <Link to='/'>TO DO</Link>
+                    </Menu.Item>
+                    <Menu.Item key="finish">
+                        <Link to='/finish'>FINISH</Link>FINISH
+                    </Menu.Item>
                 </Menu>
             </div>
         )
