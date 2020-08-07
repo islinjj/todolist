@@ -25,7 +25,7 @@ export default createReducer(initState, {
     [MARK_ITEM]: (state, action) => ({
         texts: state.texts.map(item => {
             if (item.id === action.payload.id) {
-                return { content: item.content, status: !item.status }
+                return { id: item.id, content: item.content, status: !item.status }
             }
             return item
         })

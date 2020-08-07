@@ -3,7 +3,7 @@ import {LOADING} from '../actions/actionType'
 
 const axios = require('axios');
 const todoBaseUrl = "/todos"
-const host = "https://5e9ec500fb467500166c4658.mockapi.io" + todoBaseUrl
+const host = "http://localhost:8091/" + todoBaseUrl
 
 const todoApi = axios.create({
     baseURL: host

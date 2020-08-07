@@ -16,6 +16,7 @@ class Item extends React.Component {
         )
     }
     onMark = () => {
+        console.log(this.props.item.id);
         Api.putToDoList(this.props.item.id, !this.props.item.status)
         this.props.markItem(this.props.item.id)
     }
