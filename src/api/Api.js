@@ -13,8 +13,8 @@ export default {
     getToDoList: function () {
         return todoApi.get(host)
     },
-    putToDoList: function (id, status) {
-        return todoApi.put(host + `/${id}`, { "status": status })
+    putToDoList: function (id, item) {
+        return todoApi.put(host + `/${id}`, item)
     },
     postToDo: function (data) {
         return todoApi.post(host, data)

@@ -16,7 +16,6 @@ export default createReducer(initState, {
         }
     },
     [DELETE_ITEM]: (state, action) => {
-        debugger
         let items = { texts: state.texts.filter(item => item.id !== action.payload.id) }
         return items
     },
